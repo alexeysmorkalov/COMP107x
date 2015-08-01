@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
     Button greetButton;
@@ -58,5 +61,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    // Returns current hour
+    int GetCurrentHour()
+    {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        return hour;
     }
 }
