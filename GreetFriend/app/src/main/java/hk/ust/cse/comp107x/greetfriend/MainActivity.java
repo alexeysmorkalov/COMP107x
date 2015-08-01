@@ -4,14 +4,21 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.EditText;
 
+public class MainActivity extends Activity implements View.OnClickListener {
 
-public class MainActivity extends Activity {
+    Button greetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        greetButton = (Button) findViewById(R.id.greetButton);
+        greetButton.setOnClickListener(this);
     }
 
     @Override
@@ -34,5 +41,22 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        TextView textView = (TextView) findViewById(R.id.textMessage);
+        EditText editText = (EditText) findViewById(R.id.editFriendName);
+
+        String friendName = editText.getText().toString();
+        switch (v.getId())
+        {
+            case R.id.greetButton:
+                textView.setText(getString(R.string.greetString) + friendName + "!");
+                break;
+
+            default:
+                break;
+        }
     }
 }
