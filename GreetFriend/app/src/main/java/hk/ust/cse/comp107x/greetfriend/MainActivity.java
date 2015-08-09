@@ -1,6 +1,7 @@
 package hk.ust.cse.comp107x.greetfriend;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,7 +56,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (v.getId())
         {
             case R.id.greetButton:
-                textView.setText(getString(R.string.greetString) + friendName + "!");
+                Intent in = new Intent(this, ShowMessage.class);
+                in.putExtra("message", getString(R.string.greetString) + friendName + "!");
+                startActivity(in);
                 break;
 
             default:
